@@ -1,0 +1,9 @@
+Algoritmo suma_dos_numeros
+Escribir "Hola Bienvenidos"
+Escribir "Ingresa el primer numero a sumar"
+Leer a
+Escribir "Ingrese el segundo numero a sumar"
+Leer b
+suma=a+b
+Escribir "El resultado de la suma es:",suma
+FinAlgoritmo
