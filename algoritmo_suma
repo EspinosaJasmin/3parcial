@@ -5,5 +5,6 @@ try
 num2_str = input("Ingrese el segundo numero a sumar")
 num2 = float(num2_str) 
 resultado = num1+num2
+ except ValueError:
 print (f"El resultado de la suma es: {resultado}")
 suma_dos_numeros()
