@@ -1,9 +1,9 @@
-Algoritmo suma_dos_numeros
-Escribir "Hola Bienvenidos"
-Escribir "Ingresa el primer numero a sumar"
-Leer a
-Escribir "Ingrese el segundo numero a sumar"
-Leer b
-suma=a+b
-Escribir "El resultado de la suma es:",suma
-FinAlgoritmo
+def suma_dos_numeros():
+try
+ num1_str = input("Ingresa el primer numero a sumar")
+ num1 = float(num1_str)
+num2_str = input("Ingrese el segundo numero a sumar")
+num2 = float(num2_str) 
+resultado = num1+num2
+print (f"El resultado de la suma es: {resultado}")
+suma_dos_numeros()
