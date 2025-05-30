@@ -1,0 +1,83 @@
+lista_calificaciones = []
+
+def agregar_calificacion():
+    global lista_calificaciones
+    nombre = input("Ingresa el nombre del alumno: ")
+
+    try:
+        calificaciones = []
+        for i in range(1, 4):
+            while True:
+                try:
+                    calificacion_input = input(f"Ingresa la calificación {i}: ")
+                    calificacion = float(calificacion_input)
+
+                    if 1 <= calificacion <= 10:
+                        calificaciones.append(calificacion)
+                        break
+                    else:
+                        print("¡Advertencia! La calificación debe estar entre 1 y 10. Intenta de nuevo.")
+                except ValueError:
+                    print("Error: Ingresa un número válido para la calificación.")
+
+        promedio = sum(calificaciones) / len(calificaciones)
+
+        lista_calificaciones.append((nombre, sorted(calificaciones, reverse=True), promedio))
+        lista_calificaciones.sort(key=lambda x: x[2], reverse=True)
+
+        print(f"\n¡Calificación de {nombre} agregada exitosamente!")
+        actualizar_lista()
+
+    except Exception as e:
+        print(f"\nOcurrió un error inesperado al agregar la calificación: {e}")
+
+def actualizar_lista():
+    if not lista_calificaciones:
+        print("\nNo hay calificaciones registradas aún.")
+        return
+
+    print("\n--- Calificaciones Registradas ---")
+    for i, (nombre, calificaciones, promedio) in enumerate(lista_calificaciones):
+        calif_formato = ", ".join([f"{c:.2f}" for c in calificaciones])
+        print(f"{i + 1}. Nombre: {nombre} | Calificaciones: [{calif_formato}] | Promedio: {promedio:.2f}")
+    print("----------------------------------")
+
+def mostrar_promedio_mas_alto():
+    if not lista_calificaciones:
+        print("\nNo hay calificaciones registradas para determinar el promedio más alto.")
+        return
+
+    alumno_mas_alto = lista_calificaciones[0]
+
+    nombre_alumno = alumno_mas_alto[0]
+    promedio_mas_alto = alumno_mas_alto[2]
+
+    print("\n--- Promedio Más Alto ---")
+    print(f"El promedio más alto es de: {nombre_alumno} con un promedio de {promedio_mas_alto:.2f}")
+    print("------------------------")
+
+def ejecutar_app():
+    print("--- Gestión de Calificaciones (Consola) ---")
+    while True:
+        print("\n--- Opciones ---")
+        print("1. Agregar nueva calificación")
+        print("2. Mostrar todas las calificaciones")
+        print("3. Mostrar el promedio más alto")
+        print("4. Salir")
+
+        opcion = input("Elige una opción: ")
+
+        if opcion == '1':
+            agregar_calificacion()
+        elif opcion == '2':
+            actualizar_lista()
+        elif opcion == '3':
+            mostrar_promedio_mas_alto()
+        elif opcion == '4':
+            print("¡Nos vemos pronto!")
+            break
+        else:
+            print("Opción no válida. Intenta de nuevo.")
+
+if __name__ == "__main__":
+    ejecutar_app()
